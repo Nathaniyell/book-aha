@@ -6,10 +6,11 @@ const Home = () => {
     <>
       <div className="relative bg-heroSection bg-auto bg-no-repeat">
         <Navbar />
-        <div className="flex ">
-          <div className="w-[125px] h-[125px]  bg-black text-white">
-            {" "}
-            <h1>Share thoughts from books you love </h1>{" "}
+        <div className="flex place-content-end mr-20">
+          <div className="w-[200px] h-[125px]  bg-black text-white relative">
+            <h1 className="font-bold text-4xl absolute left-24">
+              Share thoughts from <br /> <span>books you love </span>
+            </h1>
           </div>
         </div>
       </div>
