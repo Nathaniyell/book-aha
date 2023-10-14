@@ -6,32 +6,33 @@ import img3 from "../assets/img3.png";
 import FlexSection from "../components/FlexSection";
 
 const Home = () => {
-  const data = [
-    {
-      title: "Organize your thoughts",
-      description:
-        "Organise all the inspiration, ideas and lessons from books you’re reading.",
-      img: img2,
-      smFlexDirection: "",
-      lgFlexDirection: "",
-    },
-    {
-      title: "Share your thoughts",
-      description:
-        "Send your thoughts on books and articles to a community of readers like yourself",
-      img: img1,
-      smFlexDirection: "col-reverse",
-      lgFlexDirection: "row-reverse",
-    },
-    {
-      title: "Discover new content",
-      description:
-        "Find book reviews, new books, events and more exciting content curated for you.",
-      img: img3,
-      smFlexDirection: "",
-      lgFlexDirection: "",
-    },
-  ];
+    const data = [
+        {
+          title: "Organize your thoughts",
+          description:
+            "Organise all the inspiration, ideas and lessons from books you’re reading.",
+          img: img2,
+          lgFlexDirection: false, 
+          smFlexDirection: false, 
+        },
+        {
+          title: "Share your thoughts",
+          description:
+            "Send your thoughts on books and articles to a community of readers like yourself",
+          img: img1,
+          smFlexDirection: "flex-col-reverse",
+          lgFlexDirection: "flex-row-reverse",
+        },
+        {
+          title: "Discover new content",
+          description:
+            "Find book reviews, new books, events and more exciting content curated for you.",
+          img: img3,
+          smFlexDirection: false, 
+          lgFlexDirection: false, 
+        },
+      ];
+      
 
   const sections = data.map((section) => {
     return (
@@ -49,9 +50,9 @@ const Home = () => {
       <div className="relative bg-heroSection bg-auto bg-no-repeat h-screen">
         <Navbar />
         <div className="relative">
-          <div className="w-[48%] bg-black md:w-1/4 text-white absolute top-24 md:top-20 right-52 p-2">
+          <div className="w-[63%] bg-black md:w-1/4 text-white absolute top-24 md:top-20 right-52 p-2">
             <h1 className="font-bold w-full relative text-[30px]">
-              <span className="relative -right-36">Share thoughts from</span>{" "}
+              <span className="relative -right-36">Share thoughts from</span>
               <br />
               <span className="relative -right-60">books you love</span>
             </h1>

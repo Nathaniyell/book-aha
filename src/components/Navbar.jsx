@@ -21,7 +21,7 @@ const Navbar = () => {
       title={"Download App"}
       fontSize={"sm"}
       marginRight={4}
-      padding={2}
+      padding={1}
       />
     </div>
   );
