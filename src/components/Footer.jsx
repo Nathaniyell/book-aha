@@ -82,6 +82,8 @@ const Footer = () => {
           <a
             className="text-white text-lg underline"
             href="https://twitter.com/_kvngNath"
+            target="_blank"
+            rel="noreferrer"
           >
             UruaEkpa TechBros
           </a>
