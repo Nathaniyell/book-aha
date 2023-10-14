@@ -10,21 +10,21 @@ const Home = () => {
         {
         title: "Organize your thoughts",
         description: "Organise all the inspiration, ideas and lessons from books you’re reading.",
-        img: "",
+        img: img2,
         smFlexDirection: "col",
         lgFlexDirection: "row"
     },
         {
         title: "Share your thoughts",
         description: "Send your thoughts on books and articles to a community of readers like yourself",
-        img: "",
+        img: img1,
         smFlexDirection: "col-reverse",
         lgFlexDirection: "row-reverse"
     },
         {
         title: "Discover new content",
         description: "Find book reviews, new books, events and more exciting content curated for you.",
-        img: "",
+        img: img3,
         smFlexDirection: "col",
         lgFlexDirection: "row"
     },
