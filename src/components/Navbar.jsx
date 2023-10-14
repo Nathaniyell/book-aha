@@ -10,8 +10,8 @@ const Navbar = () => {
         {["About BookAha", "SignUp", "EN"].map(
           (item) => {
             return (
-              <li>
-                <button className="text-white tracking-[2px] text-[12px]">{item}</button>
+              <li key={item}>
+                <button className="text-white tracking-[2px] text-[12px] md:text-lg">{item}</button>
               </li>
             );
           }

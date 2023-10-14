@@ -38,6 +38,7 @@ const Home = () => {
   const sections = data.map((section) => {
     return (
       <FlexSection
+      key={section.title}
         title={section.title}
         description={section.description}
         img={section.img}
