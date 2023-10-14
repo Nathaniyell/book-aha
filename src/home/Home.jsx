@@ -14,6 +14,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <section className="bg-white w-11/12 mx-auto my-4 h-full">
+        
+      </section>
     </>
   );
 };
