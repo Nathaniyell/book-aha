@@ -4,6 +4,7 @@ import img1 from "../assets/img1.png";
 import img2 from "../assets/img2.png";
 import img3 from "../assets/img3.png";
 import FlexSection from "../components/FlexSection";
+import Footer from "../components/Footer";
 
 const Home = () => {
     const data = [
@@ -62,6 +63,7 @@ const Home = () => {
       <section className="bg-white w-11/12 mx-auto mt-10 md:mt-20 mb-4 h-full">
         {sections}
       </section>
+      <Footer />
     </>
   );
 };
