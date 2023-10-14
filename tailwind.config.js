@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage:{
-        heroSection: "url('src/assets/book-library.png')"
+        heroSection: "url('/src/assets/library.png')"
       },
     },
   },
