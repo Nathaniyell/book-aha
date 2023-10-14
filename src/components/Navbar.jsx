@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/logo.png";
+import Button from "./Button";
 
 const Navbar = () => {
   return (
@@ -16,7 +17,12 @@ const Navbar = () => {
           }
         )}
       </ul>
-      <button className="text-sm text-black bg-white border p-2 text-center mr-4">Download App</button>
+        <Button 
+      title={"Download App"}
+      fontSize={"sm"}
+      marginRight={4}
+      padding={2}
+      />
     </div>
   );
 };
