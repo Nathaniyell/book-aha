@@ -12,8 +12,8 @@ const Home = () => {
       description:
         "Organise all the inspiration, ideas and lessons from books you’re reading.",
       img: img2,
-      smFlexDirection: "col",
-      lgFlexDirection: "row",
+      smFlexDirection: "",
+      lgFlexDirection: "",
     },
     {
       title: "Share your thoughts",
@@ -28,8 +28,8 @@ const Home = () => {
       description:
         "Find book reviews, new books, events and more exciting content curated for you.",
       img: img3,
-      smFlexDirection: "col",
-      lgFlexDirection: "row",
+      smFlexDirection: "",
+      lgFlexDirection: "",
     },
   ];
 
@@ -58,7 +58,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <section className="bg-white w-11/12 mx-auto my-4 h-full">
+      <section className="bg-white w-11/12 mx-auto mt-10 md:mt-20 mb-4 h-full">
         {sections}
       </section>
     </>
