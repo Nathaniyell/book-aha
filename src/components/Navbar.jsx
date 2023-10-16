@@ -5,7 +5,6 @@ import Button from "./Button";
 const Navbar = () => {
   const [colourChange, setColourChange] = useState(false);
 
-useEffect(() => {
   const handleNavColour = () => {
     if (window.scrollY >= 80) {
       setColourChange(true);
@@ -13,7 +12,8 @@ useEffect(() => {
       setColourChange(false);
     }
   };
-
+useEffect(() => {
+handleNavColour()
   window.addEventListener("scroll", handleNavColour);
 
   return () => {
