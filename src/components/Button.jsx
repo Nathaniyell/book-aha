@@ -1,14 +1,10 @@
 import React from "react";
 
-const Button = ({ padding, title, marginRight, fontSize, type }) => {
+const Button = ({ title, fontSize, type="submit" }) => {
   return (
     <button
     type={type}
-      className={`text-${
-        ["20px"] || fontSize
-      } text-black bg-white border p-${padding} text-center mr-${
-        0 || marginRight
-      }`}
+      className={`text-sm md:text-${fontSize} text-black p-1 bg-white border md:p-3 text-center`}
     >
       {title}
     </button>

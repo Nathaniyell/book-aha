@@ -22,11 +22,11 @@ const Footer = () => {
       console.log("The user does not want to join the beta test");
     }
     console.log(name, email, isChecked);
-    // return {
-    //   name,
-    //   email,
-    //   isChecked,
-    // };
+    return {
+      name,
+      email,
+      isChecked,
+    };
   };
 
   return (
