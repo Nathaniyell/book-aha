@@ -25,12 +25,12 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex items-center justify-around pt-3 fixed w-full flex-wrap z-10 ${
+      className={`py-3 md:py-0 pr-2 flex items-center justify-around pt-3 fixed w-full flex-wrap z-10 ${
         colourChange ? "bg-black" : "bg-inherit"
       }`}
     >
-     <Link to='/'> <img className="w-1/5 md:w-full text-white" src={logo} alt="Logo" /></Link>
-      <ul className="flex text-white items-center justify-around lg:w-1/4 w-[40%]">
+     <Link to='/'> <img className="w-1/3 md:w-full text-white" src={logo} alt="Logo" /></Link>
+      <ul className="flex text-white items-center justify-around lg:w-1/4 w-[45%] -ml-20">
         {["About", "SignUp", "EN"].map((item) => {
           return (
             <Link to={`/${item}`} key={item}>
