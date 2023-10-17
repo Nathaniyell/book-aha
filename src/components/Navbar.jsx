@@ -1,3 +1,4 @@
+import {BrowserRouter as Router, Link} from 'react-router-dom'
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import Button from "./Button";
@@ -23,6 +24,7 @@ handleNavColour()
 
 
   return (
+    <Router>
     <div
       className={`flex items-center justify-around pt-3 fixed w-full flex-wrap z-10 ${
         colourChange ? "bg-black" : "bg-inherit"
@@ -32,16 +34,17 @@ handleNavColour()
       <ul className="flex text-white items-center justify-around lg:w-1/4 w-[40%]">
         {["About", "SignUp", "EN"].map((item) => {
           return (
-            <li key={item}>
+            <Link to={`/${item}`} key={item}>
               <button className="text-white tracking-[2px] text-[14px] md:text-xl">
                 {item}
               </button>
-            </li>
+            </Link>
           );
         })}
       </ul>
       <Button title={"Download App"} fontSize={"sm"} padding={6} />
     </div>
+    </Router>
   );
 };
 
