@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import book1 from "../assets/book1.jpg";
 import book2 from "../assets/book2.jpg";
 import book3 from "../assets/book3.jpg";
@@ -9,9 +9,37 @@ import {BsFillPersonFill} from "react-icons/bs"
 import {AiFillEye} from "react-icons/ai"
 import {MdEmail} from "react-icons/md"
 import {HiLockOpen} from "react-icons/hi"
+import {AiFillEyeInvisible} from "react-icons/ai"
 
 
 const About = () => {
+    const [password, setPassword] = useState({
+        isVisible: false,
+        isStrong: null,
+      });
+      const passwordInputRef = useRef();
+      
+      const passwordIsVisibleHandler = () => {
+        setPassword((prevState) => ({
+          ...prevState,
+          isVisible: !prevState.isVisible,
+        }));
+      };
+      const passwordIsStrongHandler = () => {
+        const passwordValue = passwordInputRef.current.value;
+        
+        const hasUppercase = /[A-Z]/.test(passwordValue);
+        const hasLowercase = /[a-z]/.test(passwordValue);
+        const hasNumber = /[0-9]/.test(passwordValue);
+          
+        if (passwordValue.length > 6 && hasUppercase && hasLowercase && hasNumber) {
+          setPassword((prevState) => ({
+            ...prevState,
+            isStrong: true,
+          }));
+        }
+      }
+      
   return (
     <div className="bg-signUp bg-contain bg-center w-full px-4">
       <div class=" relative top-24">
@@ -50,11 +78,11 @@ const About = () => {
                 
                 <input
                   class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  id="username"
+                  id="First Name"
                   type="text"
-                  placeholder="Email"
+                  placeholder="First Name"
                 />
-                <div class="absolute left-0 inset-y-0 flex items-center">
+                <div class="absolute left-0 inset-y-0 flex items-center" >
                   
                  <BsFillPersonFill className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
@@ -64,8 +92,8 @@ const About = () => {
                 
                 <input
                   class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  id="username"
-                  type="text"
+                  id="email"
+                  type="email"
                   placeholder="Email"
                 />
                 <div class="absolute left-0 inset-y-0 flex items-center">
@@ -76,16 +104,19 @@ const About = () => {
          
                 <input
                   class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                  id="username"
-                  type="text"
+                  id="password"
+                  type={passwordIsVisible? "text": "password"}
                   placeholder="Password"
+                  ref={passwordInputRef}
                 />
                 <div class="absolute left-0 inset-y-0 flex items-center">
            
                   <HiLockOpen className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
-                <div className="absolute right-0 inset-y-0 flex items-center">
-                    <AiFillEye className="text-gray-400 h-5 w-5 mr-3 cursor-pointer" />
+                <div className="absolute right-0 inset-y-0 flex items-center cursor-pointer" onClick={passwordIsVisibleHandler}>
+                    {passwordIsVisible? <AiFillEyeInvisible className="text-gray-400 h-5 w-5 mr-3" />:                   
+                    <AiFillEye className="text-gray-400 h-5 w-5 mr-3" />
+                }
                 </div>
               </div>
               <p class="mt-4 italic text-gray-500 font-light text-xs">
