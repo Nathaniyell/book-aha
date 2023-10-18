@@ -18,129 +18,156 @@ const About = () => {
         isStrong: null,
       });
       const passwordInputRef = useRef();
-      
+    
       const passwordIsVisibleHandler = () => {
         setPassword((prevState) => ({
           ...prevState,
           isVisible: !prevState.isVisible,
         }));
       };
-      const passwordIsStrongHandler = () => {
+    
+      const checkPasswordStrength = (value) => {
+        const hasUppercase = /[A-Z]/.test(value);
+        const hasLowercase = /[a-z]/.test(value);
+        const hasNumber = /[0-9]/.test(value);
+    
+        return value.length > 6 && hasUppercase && hasLowercase && hasNumber;
+      };
+    
+      const handlePasswordChange = (e) => {
+        const passwordValue = e.target.value;
+        const isStrong = checkPasswordStrength(passwordValue);
+        setPassword((prevState) => ({
+          ...prevState,
+          isStrong: isStrong,
+        }));
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        // Check the password strength one more time before submitting
         const passwordValue = passwordInputRef.current.value;
-        
-        const hasUppercase = /[A-Z]/.test(passwordValue);
-        const hasLowercase = /[a-z]/.test(passwordValue);
-        const hasNumber = /[0-9]/.test(passwordValue);
-          
-        if (passwordValue.length > 6 && hasUppercase && hasLowercase && hasNumber) {
-          setPassword((prevState) => ({
-            ...prevState,
-            isStrong: true,
-          }));
+        const isStrong = checkPasswordStrength(passwordValue);
+    
+        if (isStrong) {
+            setPassword((prevState) => ({
+                ...prevState,
+                isStrong: true,
+              }));
+          console.log("Form submitted");
+        } else {
+            setPassword((prevState) => ({
+                ...prevState,
+                isStrong: false,
+              }));
+          console.error("Password is not strong");
         }
-      }
+      };
+    
       
   return (
     <div className="bg-signUp bg-contain bg-center w-full px-4">
-      <div class=" relative top-24">
+      <div className=" relative top-24">
    
-        <div class="p-4 lg:w-1/2 mx-auto">
+        <div className="p-4 lg:w-1/2 mx-auto">
    
-          <div class="bg-white rounded-t-lg p-4">
+          <div className="bg-white rounded-t-lg p-4">
     
-            <p class="text-center text-sm text-gray-600 font-light">
+            <p className="text-center text-sm text-gray-600 font-light">
               Sign up with
             </p>
             <div>
             
-              <div class="flex items-center justify-center space-x-4 mt-3">
+              <div className="flex items-center justify-center space-x-4 mt-3">
         
-                <button class="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <button className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                  <BsGithub className="text-3xl text-black mr-4" />
                   Github
                 </button>
-                <button class="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <button className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                  <FcGoogle className="text-3xl mr-4" />
                   Google
                 </button>
               </div>
             </div>
           </div>
-          <div class="bg-gray-100 rounded-b-lg py-4 px-4 lg:px-24">
+          <div className="bg-gray-100 rounded-b-lg py-4 px-4 lg:px-24">
             
-            <p class="text-center text-sm text-gray-500 font-light">
+            <p className="text-center text-sm text-gray-500 font-light">
               
               Or sign up with credentials
             </p>
-            <form class="mt-4">
+            <form className="mt-4" onSubmit={handleSubmit}>
               
-              <div class="relative">
+              <div className="relative">
                 
                 <input
-                  class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                   id="First Name"
                   type="text"
                   placeholder="First Name"
                 />
-                <div class="absolute left-0 inset-y-0 flex items-center" >
+                <div className="absolute left-0 inset-y-0 flex items-center" >
                   
                  <BsFillPersonFill className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
                 
               </div>
-              <div class="relative mt-3">
+              <div className="relative mt-3">
                 
                 <input
-                  class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                   id="email"
                   type="email"
                   placeholder="Email"
                 />
-                <div class="absolute left-0 inset-y-0 flex items-center">
+                <div className="absolute left-0 inset-y-0 flex items-center">
                                     <MdEmail className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
               </div>
-              <div class="relative mt-3">
+              <div className="relative mt-3">
          
                 <input
-                  class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                   id="password"
-                  type={passwordIsVisible? "text": "password"}
+                  type={password.isVisible? "text": "password"}
                   placeholder="Password"
                   ref={passwordInputRef}
                 />
-                <div class="absolute left-0 inset-y-0 flex items-center">
+                <div className="absolute left-0 inset-y-0 flex items-center">
            
                   <HiLockOpen className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
-                <div className="absolute right-0 inset-y-0 flex items-center cursor-pointer" onClick={passwordIsVisibleHandler}>
-                    {passwordIsVisible? <AiFillEyeInvisible className="text-gray-400 h-5 w-5 mr-3" />:                   
+                <div className="absolute right-0 inset-y-0 flex items-center cursor-pointer" onClick={passwordIsVisibleHandler} onChange={handlePasswordChange}>
+                    {password.isVisible? <AiFillEyeInvisible className="text-gray-400 h-5 w-5 mr-3" />:                   
                     <AiFillEye className="text-gray-400 h-5 w-5 mr-3" />
                 }
                 </div>
               </div>
-              <p class="mt-4 italic text-gray-500 font-light text-xs">
+              {password.isStrong !== null && <p className="mt-4 italic text-gray-500 font-light text-xs">
                 Password strength:
-                <span class="font-bold text-green-400">strong</span>
-              </p>
-              <div class="mt-4 flex items-center text-gray-500">
+                <span className={`font-bold ${password.isStrong? "text-green-400": "text-red-500"} `}>{password.isStrong ? "Strong" : "Weak (Password length must be greater than 6)"}</span>
+              </p>}
+              
+              <div className="mt-4 flex items-center text-gray-500">
          
                 <input
                   type="checkbox"
                   id="remember"
                   name="remember"
-                  class="mr-2"
-                />{" "}
-                <label class="text-sm" for="remember">
+                  className="mr-2"
+                />
+                <label className="text-sm" htmlFor="remember">
                   I agree with the
-                  <a class="text-indigo-400 hover:text-indigo-500">
+                  <a className="text-indigo-400 hover:text-indigo-500">
                     Privacy Policy
                   </a>
                 </label>
               </div>
-              <div class="flex items-center justify-center mt-8">
+              <div className="flex items-center justify-center mt-8">
          
-                <button class="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
            
                   Create Account
                 </button>
