@@ -67,7 +67,7 @@ const SignUp = () => {
     
       
   return (
-    <div className="bg-signUp bg-contain bg-no-repeat w-full">
+    <div className="bg-signUp bg-no-repeat bg-cover bg-origin-padding  px-4 pb-48 md:pb-48">
       <div className=" relative top-24">
    
         <div className="p-4 lg:w-1/2 mx-auto">
@@ -82,11 +82,11 @@ const SignUp = () => {
               <div className="flex items-center justify-center space-x-4 mt-3">
         
                 <button className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                 <BsGithub className="text-3xl text-black mr-4" />
+                 <BsGithub className="text-3xl text-black " />
                   Github
                 </button>
                 <button className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                 <FcGoogle className="text-3xl mr-4" />
+                 <FcGoogle className="text-3xl " />
                   Google
                 </button>
               </div>
