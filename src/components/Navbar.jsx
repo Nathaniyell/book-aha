@@ -34,7 +34,7 @@ const Navbar = () => {
         {["About", "SignUp", "EN"].map((item) => {
           return (
             <Link to={`/${item}`} key={item}>
-              <button className="text-white tracking-[2px] text-[14px] md:text-xl">
+              <button className="text-white tracking-[2px] text-[14px] md:text-xl hover:underline">
                 {item}
               </button>
             </Link>

@@ -3,6 +3,7 @@ import Home from "./home/Home";
 import About from "./About/About";
 import SignUp from "./SignUp/SignUp";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
+        <Footer />
       </Router>
     </>
   );

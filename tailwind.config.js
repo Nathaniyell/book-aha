@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       backgroundImage:{
         heroSection: "url('/src/assets/library.png')",
-        signUp: "url('/src/assets/book4.jpg')"
+        signUp: "url('/src/assets/book3.jpg')"
       },
     },
   },

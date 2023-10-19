@@ -64,7 +64,7 @@ const Home = () => {
       <section className="bg-white w-11/12 mx-auto mt-10 md:mt-20 mb-4 h-full">
         {sections}
       </section>
-      <Footer />
+
     </>
   );
 };
