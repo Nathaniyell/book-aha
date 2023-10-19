@@ -81,11 +81,11 @@ const SignUp = () => {
             
               <div className="flex items-center justify-center space-x-4 mt-3">
         
-                <button className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <button className="flex items-center w-1/2 justify-between md:w-1/5 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                  <BsGithub className="text-3xl text-black " />
                   Github
                 </button>
-                <button className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <button className="flex items-center w-1/2 justify-between md:w-1/5 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                  <FcGoogle className="text-3xl " />
                   Google
                 </button>
@@ -160,7 +160,7 @@ const SignUp = () => {
                 />
                 <label className="text-sm" htmlFor="remember">
                   I agree with the
-                  <a className="text-indigo-400 hover:text-indigo-500">
+                  <a className="text-indigo-400 hover:text-indigo-500"> &nbsp;
                     Privacy Policy
                   </a>
                 </label>
