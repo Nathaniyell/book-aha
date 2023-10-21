@@ -1,8 +1,4 @@
 import React, { useRef, useState } from "react";
-import book1 from "../assets/book1.jpg";
-import book2 from "../assets/book2.jpg";
-import book3 from "../assets/book3.jpg";
-import book4 from "../assets/book4.jpg";
 import {BsGithub} from 'react-icons/bs'
 import {FcGoogle} from "react-icons/fc"
 import {BsFillPersonFill} from "react-icons/bs"
@@ -63,31 +59,32 @@ const SignUp = () => {
               }));
           console.error("Password is not strong");
         }
+        handlePasswordChange()
       };
     
       
   return (
-    <div className="bg-signUp bg-no-repeat bg-cover bg-origin-padding  px-4 pb-48 md:pb-48">
+    <div className="bg-signUp bg-no-repeat bg-cover bg-origin-padding  px-2 pb-48 md:pb-48">
       <div className=" relative top-24">
    
-        <div className="p-4 lg:w-1/2 mx-auto">
+        <div className="p-2 lg:w-1/2 mx-auto">
    
           <div className="bg-white  rounded-t-lg p-4">
     
-            <p className="text-center  text-sm text-gray-600 font-light">
+            <p className="text-center  text-xl font-bold text-gray-600">
               Sign up with
             </p>
             <div>
             
-              <div className="flex items-center justify-center space-x-4 mt-3">
+              <div className="flex items-center justify-center space-x-4 mt-6">
         
-                <button className="flex items-center w-1/2 justify-between md:w-1/5 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <button className="flex items-center w-1/2 justify-between md:w-1/5 lg:w-1/4 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                  <BsGithub className="text-3xl text-black " />
                   Github
                 </button>
-                <button className="flex items-center w-1/2 justify-between md:w-1/5 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <button className="flex items-center w-1/2 justify-between md:w-1/5 lg:w-1/4 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                  <FcGoogle className="text-3xl " />
-                  Google
+                 Google
                 </button>
               </div>
             </div>
@@ -103,9 +100,10 @@ const SignUp = () => {
               <div className="relative">
                 
                 <input
-                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition h-10  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                   id="First Name"
                   type="text"
+                  required
                   placeholder="First Name"
                 />
                 <div className="absolute left-0 inset-y-0 flex items-center" >
@@ -117,9 +115,10 @@ const SignUp = () => {
               <div className="relative mt-3">
                 
                 <input
-                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition h-10 rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                   id="email"
                   type="email"
+                  required
                   placeholder="Email"
                 />
                 <div className="absolute left-0 inset-y-0 flex items-center">
@@ -129,7 +128,7 @@ const SignUp = () => {
               <div className="relative mt-3">
          
                 <input
-                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                  className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition h-10 rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                   id="password"
                   type={password.isVisible? "text": "password"}
                   placeholder="Password"
@@ -156,18 +155,18 @@ const SignUp = () => {
                   type="checkbox"
                   id="remember"
                   name="remember"
-                  className="mr-2"
+                  className="mr-2 h-8"
                 />
                 <label className="text-sm" htmlFor="remember">
                   I agree with the
-                  <a className="text-indigo-400 hover:text-indigo-500"> &nbsp;
+                  &nbsp;<span className="text-rose-400 cursor-pointer hover:text-rose-500">
                     Privacy Policy
-                  </a>
+                  </span>
                 </label>
               </div>
               <div className="flex items-center justify-center mt-8">
          
-                <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <button type="submit" className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
            
                   Create Account
                 </button>

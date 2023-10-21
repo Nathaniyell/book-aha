@@ -29,17 +29,21 @@ const Navbar = () => {
         colourChange ? "bg-black" : "bg-inherit"
       }`}
     >
-     <Link to='/'> <img className="w-1/3 md:w-full text-white" src={logo} alt="Logo" /></Link>
-      <ul className="flex text-white items-center justify-around lg:w-1/4 w-[45%] -ml-20">
-        {["About", "SignUp", "EN"].map((item) => {
+     <Link to='/'> <img className="w-[40%] md:w-full text-white" src={logo} alt="Logo" /></Link>
+      <ul className="flex text-white items-center justify-around lg:w-1/4 w-[45%] -ml-28">
+        {["About", "SignUp"].map((item) => {
           return (
             <Link to={`/${item}`} key={item}>
-              <button className="text-white tracking-[2px] text-[14px] md:text-xl hover:underline">
+              <button className="text-white tracking-[2px] md:ml-0 text-[14px] md:text-xl hover:underline">
                 {item}
               </button>
             </Link>
-          );
+                      );
         })}
+        <div>
+          <span></span>
+          <span>EN</span>
+        </div>
       </ul>
       <Button title={"Download App"} fontSize={"sm"} padding={6} />
     </div>
