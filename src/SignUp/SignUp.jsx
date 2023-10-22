@@ -75,14 +75,14 @@ const SignUp = () => {
             </p>
             <div>
             
-              <div className="flex items-center justify-center space-x-4 mt-6">
+              <div className="flex items-center justify-center space-x-4 mt-6 w-[80%] mx-auto">
         
-                <button className="flex items-center w-1/2 justify-between md:w-1/5 lg:w-1/4 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                 <BsGithub className="text-3xl text-black " />
+                <button className="flex items-center justify-between sm:w-1/4 md:w-1/5 lg:w-1/4 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                 <BsGithub className="text-2xl text-black " />
                   Github
                 </button>
-                <button className="flex items-center w-1/2 justify-between md:w-1/5 lg:w-1/4 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                 <FcGoogle className="text-3xl " />
+                <button className="flex items-center justify-between sm:w-1/4 md:w-1/5 lg:w-1/4 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                 <FcGoogle className="text-2xl " />
                  Google
                 </button>
               </div>
@@ -165,7 +165,7 @@ const SignUp = () => {
               </div>
               <div className="flex items-center justify-center mt-8">
          
-                <button type="submit" className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                <button type="submit" className="text-black py-2 px-4 uppercase rounded bg-white hover:bg-black hover:text-white shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
            
                   Create Account
                 </button>
