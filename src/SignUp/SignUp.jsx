@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -14,11 +14,13 @@ const SignUp = () => {
     password: "",
     checked: false,
   };
+  const [formErrors, setFormErrors] = useState({});
   const [formData, setFormData] = useState(initialValues);
   const [password, setPassword] = useState({
     isVisible: false,
     isStrong: null,
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const passwordIsVisibleHandler = () => {
     setPassword((prevState) => ({
@@ -37,18 +39,37 @@ const SignUp = () => {
     });
     // console.log(formData);
   };
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmitted) {
+      console.log(formData);
+    }
+  }, [formErrors]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setFormErrors(formValidate(formData));
+    setIsSubmitted(true);
 
-
-    
-  setFormData({
-    checked: false,
-    firstName: "",
-    password: "",
-    email: "",
-  })
+    setFormData({
+      checked: false,
+      firstName: "",
+      password: "",
+      email: "",
+    });
+  };
+  const formValidate = (values) => {
+    const errors = {};
+    const passwordPattern = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    if (!values.firstName) {
+      errors.firstName = "First name is required";
+    }
+    if (!values.email) {
+      errors.email = "Email is required";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    }
+    return errors;
   };
 
   return (
