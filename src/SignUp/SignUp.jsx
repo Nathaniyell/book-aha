@@ -59,7 +59,6 @@ const SignUp = () => {
               }));
           console.error("Password is not strong");
         }
-        handlePasswordChange()
       };
     
       
