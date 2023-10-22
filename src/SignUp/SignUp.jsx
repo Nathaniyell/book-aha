@@ -9,11 +9,13 @@ import {AiFillEyeInvisible} from "react-icons/ai"
 
 
 const SignUp = () => {
+  const initialValues = {firstName: "", email: "", password: "", checked: false}
+  const [formData, setFormData] = useState(initialValues)
     const [password, setPassword] = useState({
         isVisible: false,
         isStrong: null,
       });
-      const passwordInputRef = useRef();
+      
     
       const passwordIsVisibleHandler = () => {
         setPassword((prevState) => ({
@@ -22,44 +24,12 @@ const SignUp = () => {
         }));
       };
     
-      const checkPasswordStrength = (value) => {
-        const hasUppercase = /[A-Z]/.test(value);
-        const hasLowercase = /[a-z]/.test(value);
-        const hasNumber = /[0-9]/.test(value);
-    
-        return value.length > 6 && hasUppercase && hasLowercase && hasNumber;
-      };
-    
-      const handlePasswordChange = (e) => {
-        const passwordValue = e.target.value;
-        const isStrong = checkPasswordStrength(passwordValue);
-        setPassword((prevState) => ({
-          ...prevState,
-          isStrong: isStrong,
-        }));
-      };
+     
     
       const handleSubmit = (e) => {
         e.preventDefault();
     
-        // Check the password strength one more time before submitting
-        const passwordValue = passwordInputRef.current.value;
-        const isStrong = checkPasswordStrength(passwordValue);
-    
-        if (isStrong) {
-            setPassword((prevState) => ({
-                ...prevState,
-                isStrong: true,
-              }));
-          console.log("Form submitted");
-        } else {
-            setPassword((prevState) => ({
-                ...prevState,
-                isStrong: false,
-              }));
-          console.error("Password is not strong");
-        }
-      };
+         };
     
       
   return (
@@ -104,6 +74,7 @@ const SignUp = () => {
                   type="text"
                   required
                   placeholder="First Name"
+                  value={formData.firstName}
                 />
                 <div className="absolute left-0 inset-y-0 flex items-center" >
                   
@@ -119,6 +90,7 @@ const SignUp = () => {
                   type="email"
                   required
                   placeholder="Email"
+                  value={formData.email}
                 />
                 <div className="absolute left-0 inset-y-0 flex items-center">
                                     <MdEmail className="text-gray-400 h-5 w-5 ml-3" />
@@ -131,13 +103,13 @@ const SignUp = () => {
                   id="password"
                   type={password.isVisible? "text": "password"}
                   placeholder="Password"
-                  ref={passwordInputRef}
+                  value={formData.password}
                 />
                 <div className="absolute left-0 inset-y-0 flex items-center">
            
                   <HiLockOpen className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
-                <div className="absolute right-0 inset-y-0 flex items-center cursor-pointer" onClick={passwordIsVisibleHandler} onChange={handlePasswordChange}>
+                <div className="absolute right-0 inset-y-0 flex items-center cursor-pointer" onClick={passwordIsVisibleHandler} >
                     {password.isVisible? <AiFillEyeInvisible className="text-gray-400 h-5 w-5 mr-3" />:                   
                     <AiFillEye className="text-gray-400 h-5 w-5 mr-3" />
                 }
@@ -152,11 +124,13 @@ const SignUp = () => {
          
                 <input
                   type="checkbox"
-                  id="remember"
-                  name="remember"
+                  id="checkbox"
+                  name="checkbox"
                   className="mr-2 h-8"
+                  value={formData.checked}
+
                 />
-                <label className="text-sm" htmlFor="remember">
+                <label className="text-sm" htmlFor="checkbox">
                   I agree with the
                   &nbsp;<span className="text-rose-400 cursor-pointer hover:text-rose-500">
                     Privacy Policy
