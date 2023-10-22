@@ -37,7 +37,7 @@ const SignUp = () => {
         [name]: type === "checkbox" ? checked : value,
       };
     });
-    // console.log(formData);
+    
   };
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmitted) {
@@ -45,17 +45,35 @@ const SignUp = () => {
     }
   }, [formErrors]);
 
+  const sendLoginDetails = async(taskText)=>{
+    fetch('https://fetchmovies-udemy-default-rtdb.firebaseio.com/tasks.json',{
+          
+    method: "POST",
+    body: {text:taskText} ,
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+  }
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormErrors(formValidate(formData));
+    const errors = formValidate(formData)
+    setFormErrors(errors);
     setIsSubmitted(true);
-
-    // setFormData({
-    //   firstName: "",
-    //   email: "",
-    //   password: "",
-    //   checked: false,
-    // });
+console.log(formData)
+sendLoginDetails(formData)
+    setFormData({
+      firstName: "",
+      email: "",
+      password: "",
+      checked: false,
+    });
+    setPassword((prevState) => ({
+      ...prevState,
+      isStrong: null,
+    }));
   };
   const formValidate = (values) => {
     const errors = {};
@@ -70,13 +88,13 @@ const SignUp = () => {
       errors.password = "Password is required!";
     }else if(!passwordPattern.test(values.password)){
       errors.password = "Password must contain capital and small letters together with a number"
-    }else if (values.password.length > 6){
+    }else if (values.password.length < 6){
+     errors.password = "Password must be at least 6 characters long"
+    }else {
       setPassword((prevState) => ({
         ...prevState,
         isStrong: true,
       }));
-    }else if(!password.isStrong){
-      errors.password = "Weak! Password must be 6 chars long"
     }
     return errors;
   };
@@ -84,6 +102,7 @@ const SignUp = () => {
   return (
     <div className="bg-signUp bg-no-repeat bg-cover bg-origin-padding  px-2 pb-48 md:pb-48">
       <div className=" relative top-24">
+        {isSubmitted && <p className="bg-white text-center uppercase p-4 w-1/2 mx-auto text-green-600"></p>}
         <div className="p-2 lg:w-1/2 mx-auto">
           <div className="bg-white  rounded-t-lg p-4">
             <p className="text-center  text-xl font-bold text-gray-600">
@@ -176,7 +195,7 @@ const SignUp = () => {
                   >
                     {password.isStrong
                       ? "Strong"
-                      : `${<p>{formErrors.password}</p>}`}
+                      : `${<p className="text-red-600 text-sm">{formErrors.password}</p>}`}
                   </span>
                 </p>
               )}
