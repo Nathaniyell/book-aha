@@ -30,7 +30,7 @@ const Navbar = () => {
       }`}
     >
      <Link to='/'> <img className="w-[40%] md:w-full text-white" src={logo} alt="Logo" /></Link>
-      <ul className="flex text-white items-center justify-around lg:w-1/4 w-[45%] -ml-28">
+      <ul className="flex text-white items-center justify-around lg:w-1/4 -ml-32 md:-ml-0 w-[45%]">
         {["About", "SignUp"].map((item) => {
           return (
             <Link to={`/${item}`} key={item}>
@@ -45,7 +45,7 @@ const Navbar = () => {
           <span>EN</span>
         </div>
       </ul>
-      <Button title={"Download App"} fontSize={"sm"} padding={6} />
+      <Button classes="hidden sm:block" title={"Download App"} fontSize={"sm"} padding={6} />
     </div>
   );
 };
