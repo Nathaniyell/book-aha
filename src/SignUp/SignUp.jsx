@@ -71,6 +71,7 @@ const SignUp = () => {
                 <input
                   className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition h-10  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                   id="First Name"
+                  name="firstName"
                   type="text"
                   required
                   placeholder="First Name"
@@ -88,6 +89,7 @@ const SignUp = () => {
                   className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition h-10 rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                   id="email"
                   type="email"
+                  name="email"
                   required
                   placeholder="Email"
                   value={formData.email}
@@ -101,6 +103,7 @@ const SignUp = () => {
                 <input
                   className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition h-10 rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                   id="password"
+                  name="password"
                   type={password.isVisible? "text": "password"}
                   placeholder="Password"
                   value={formData.password}
@@ -125,7 +128,7 @@ const SignUp = () => {
                 <input
                   type="checkbox"
                   id="checkbox"
-                  name="checkbox"
+                  name="checked"
                   className="mr-2 h-8"
                   value={formData.checked}
 
