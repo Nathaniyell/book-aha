@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect,useState } from "react";
 import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -41,7 +41,7 @@ const SignUp = () => {
   };
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmitted) {
-      console.log(formData);
+      console.log(formErrors);
     }
   }, [formErrors]);
 
@@ -50,24 +50,33 @@ const SignUp = () => {
     setFormErrors(formValidate(formData));
     setIsSubmitted(true);
 
-    setFormData({
-      checked: false,
-      firstName: "",
-      password: "",
-      email: "",
-    });
+    // setFormData({
+    //   firstName: "",
+    //   email: "",
+    //   password: "",
+    //   checked: false,
+    // });
   };
   const formValidate = (values) => {
     const errors = {};
     const passwordPattern = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
     if (!values.firstName) {
-      errors.firstName = "First name is required";
+      errors.firstName = "First name is required!";
     }
     if (!values.email) {
-      errors.email = "Email is required";
+      errors.email = "Email is required!";
     }
     if (!values.password) {
-      errors.password = "Password is required";
+      errors.password = "Password is required!";
+    }else if(!passwordPattern.test(values.password)){
+      errors.password = "Password must contain capital and small letters together with a number"
+    }else if (values.password.length > 6){
+      setPassword((prevState) => ({
+        ...prevState,
+        isStrong: true,
+      }));
+    }else if(!password.isStrong){
+      errors.password = "Weak! Password must be 6 chars long"
     }
     return errors;
   };
@@ -105,7 +114,7 @@ const SignUp = () => {
                   id="First Name"
                   name="firstName"
                   type="text"
-                  required
+                  //required
                   placeholder="First Name"
                   value={formData.firstName}
                   onChange={handleChange}
@@ -114,13 +123,14 @@ const SignUp = () => {
                   <BsFillPersonFill className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
               </div>
+                <p className="text-red-600 text-sm">{formErrors.firstName}</p>
               <div className="relative mt-3">
                 <input
                   className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition h-10 rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                   id="email"
                   type="email"
                   name="email"
-                  required
+                  // required
                   placeholder="Email"
                   value={formData.email}
                   onChange={handleChange}
@@ -129,6 +139,7 @@ const SignUp = () => {
                   <MdEmail className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
               </div>
+                <p className="text-red-600 text-sm">{formErrors.email}</p>
               <div className="relative mt-3">
                 <input
                   className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition h-10 rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
@@ -142,6 +153,7 @@ const SignUp = () => {
                 <div className="absolute left-0 inset-y-0 flex items-center">
                   <HiLockOpen className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
+                
                 <div
                   className="absolute right-0 inset-y-0 flex items-center cursor-pointer"
                   onClick={passwordIsVisibleHandler}
@@ -152,7 +164,8 @@ const SignUp = () => {
                     <AiFillEye className="text-gray-400 h-5 w-5 mr-3" />
                   )}
                 </div>
-              </div>
+              </div><p>
+                {formErrors.password}</p>
               {password.isStrong !== null && (
                 <p className="mt-4 italic text-gray-500 font-light text-xs">
                   Password strength:
@@ -163,7 +176,7 @@ const SignUp = () => {
                   >
                     {password.isStrong
                       ? "Strong"
-                      : "Weak (Password length must be greater than 6)"}
+                      : `${<p>{formErrors.password}</p>}`}
                   </span>
                 </p>
               )}
