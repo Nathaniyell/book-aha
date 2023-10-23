@@ -6,8 +6,8 @@ import { AiFillEye } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 import { HiLockOpen } from "react-icons/hi";
 import { AiFillEyeInvisible } from "react-icons/ai";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const initialValues = {
@@ -20,7 +20,6 @@ const SignUp = () => {
   const [formData, setFormData] = useState(initialValues);
   const [password, setPassword] = useState({
     isVisible: false,
-    isStrong: null,
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -47,13 +46,16 @@ const SignUp = () => {
 
   const sendLoginDetails = async (data) => {
     try {
-      const response = await fetch("https://fetchmovies-udemy-default-rtdb.firebaseio.com/sign-up.json", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://fetchmovies-udemy-default-rtdb.firebaseio.com/sign-up.json",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         console.log("Form submitted successfully!");
@@ -65,7 +67,8 @@ const SignUp = () => {
     }
   };
 
-  const notify = ()=>toast.success("Congratulations \n Account successfully created")
+  const notify = () =>
+    toast.success("Congratulations \n Account successfully created");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,12 +79,8 @@ const SignUp = () => {
 
     if (Object.keys(errors).length === 0) {
       sendLoginDetails(formData);
-      notify()
+      notify();
       setFormData(initialValues);
-      setPassword((prevState) => ({
-        ...prevState,
-        isStrong: null,
-      }));
     }
     // setIsSubmitted(false)
   };
@@ -102,11 +101,6 @@ const SignUp = () => {
         "Password must contain capital and small letters together with a number";
     } else if (values.password.length < 6) {
       errors.password = "Password must be at least 6 characters long";
-    } else {
-      setPassword((prevState) => ({
-        ...prevState,
-        isStrong: true,
-      }));
     }
     return errors;
   };
@@ -114,15 +108,13 @@ const SignUp = () => {
   return (
     <div className="bg-signUp bg-no-repeat bg-cover bg-origin-padding  px-2 pb-48 md:pb-48">
       <div className=" relative top-24">
-        {isSubmitted && (
-          <ToastContainer />
-        )}
+        {isSubmitted && <ToastContainer />}
         <div className="p-2 lg:w-1/2 mx-auto">
           <div className="bg-white  rounded-t-lg p-4">
             <p className="text-center  text-xl font-bold text-gray-600">
               Sign up with
             </p>
-                        <div>
+            <div>
               <div className="flex items-center justify-center space-x-4 mt-6 w-[80%] mx-auto">
                 <button className="flex items-center justify-between sm:w-1/4 md:w-1/5 lg:w-1/4 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                   <BsGithub className="text-2xl text-black " />
@@ -197,26 +189,7 @@ const SignUp = () => {
                   )}
                 </div>
               </div>
-              <p>{formErrors.password}</p>
-              {password.isStrong !== null && (
-                <p className="mt-4 italic text-gray-500 font-light text-xs">
-                  Password strength:
-                  <span
-                    className={`font-bold ${
-                      password.isStrong ? "text-green-400" : "text-red-500"
-                    } `}
-                  >
-                    {password.isStrong
-                      ? "Strong"
-                      : `${(
-                          <p className="text-red-600 text-sm">
-                            {formErrors.password}
-                          </p>
-                        )}`}
-                  </span>
-                </p>
-              )}
-
+              <p className="text-red-600 text-sm">{formErrors.password}</p>
               <div className="mt-4 flex items-center text-gray-500">
                 <input
                   type="checkbox"
