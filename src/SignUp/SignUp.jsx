@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -31,50 +31,57 @@ const SignUp = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((previousFormValues) => {
-      return {
-        ...previousFormValues,
-        [name]: type === "checkbox" ? checked : value,
-      };
-    });
-    
+    setFormData((previousFormValues) => ({
+      ...previousFormValues,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
+
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmitted) {
       console.log(formErrors);
     }
   }, [formErrors]);
 
-  const sendLoginDetails = async(taskText)=>{
-    fetch('https://fetchmovies-udemy-default-rtdb.firebaseio.com/tasks.json',{
-          
-    method: "POST",
-    body: {text:taskText} ,
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  })
-  }
+  const sendLoginDetails = async (data) => {
+    try {
+      const response = await fetch("https://fetchmovies-udemy-default-rtdb.firebaseio.com/sign-up.json", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
+      if (response.ok) {
+        console.log("Form submitted successfully!");
+      } else {
+        console.error("Form submission failed.");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const errors = formValidate(formData)
+    const errors = formValidate(formData);
     setFormErrors(errors);
     setIsSubmitted(true);
-console.log(formData)
-sendLoginDetails(formData)
-    setFormData({
-      firstName: "",
-      email: "",
-      password: "",
-      checked: false,
-    });
-    setPassword((prevState) => ({
-      ...prevState,
-      isStrong: null,
-    }));
+    // console.log(formData);
+
+    if (Object.keys(errors).length === 0) {
+   
+      sendLoginDetails(formData);
+      setFormData(initialValues);
+      setPassword((prevState) => ({
+        ...prevState,
+        isStrong: null,
+      }));
+    }
+    setIsSubmitted(false)
   };
+
   const formValidate = (values) => {
     const errors = {};
     const passwordPattern = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
@@ -86,11 +93,12 @@ sendLoginDetails(formData)
     }
     if (!values.password) {
       errors.password = "Password is required!";
-    }else if(!passwordPattern.test(values.password)){
-      errors.password = "Password must contain capital and small letters together with a number"
-    }else if (values.password.length < 6){
-     errors.password = "Password must be at least 6 characters long"
-    }else {
+    } else if (!passwordPattern.test(values.password)) {
+      errors.password =
+        "Password must contain capital and small letters together with a number";
+    } else if (values.password.length < 6) {
+      errors.password = "Password must be at least 6 characters long";
+    } else {
       setPassword((prevState) => ({
         ...prevState,
         isStrong: true,
@@ -102,14 +110,15 @@ sendLoginDetails(formData)
   return (
     <div className="bg-signUp bg-no-repeat bg-cover bg-origin-padding  px-2 pb-48 md:pb-48">
       <div className=" relative top-24">
-        {isSubmitted && <p className="bg-white text-center uppercase p-4 w-1/2 mx-auto text-green-600"></p>}
+        {isSubmitted && (
+          <p className="bg-white text-center uppercase p-4 w-2/5 mx-auto text-green-600">successfully created an account</p>
+        )}
         <div className="p-2 lg:w-1/2 mx-auto">
           <div className="bg-white  rounded-t-lg p-4">
             <p className="text-center  text-xl font-bold text-gray-600">
               Sign up with
             </p>
-            {JSON.stringify(formData)}
-            <div>
+                        <div>
               <div className="flex items-center justify-center space-x-4 mt-6 w-[80%] mx-auto">
                 <button className="flex items-center justify-between sm:w-1/4 md:w-1/5 lg:w-1/4 py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                   <BsGithub className="text-2xl text-black " />
@@ -142,7 +151,7 @@ sendLoginDetails(formData)
                   <BsFillPersonFill className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
               </div>
-                <p className="text-red-600 text-sm">{formErrors.firstName}</p>
+              <p className="text-red-600 text-sm">{formErrors.firstName}</p>
               <div className="relative mt-3">
                 <input
                   className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition h-10 rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
@@ -158,7 +167,7 @@ sendLoginDetails(formData)
                   <MdEmail className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
               </div>
-                <p className="text-red-600 text-sm">{formErrors.email}</p>
+              <p className="text-red-600 text-sm">{formErrors.email}</p>
               <div className="relative mt-3">
                 <input
                   className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition h-10 rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
@@ -172,7 +181,7 @@ sendLoginDetails(formData)
                 <div className="absolute left-0 inset-y-0 flex items-center">
                   <HiLockOpen className="text-gray-400 h-5 w-5 ml-3" />
                 </div>
-                
+
                 <div
                   className="absolute right-0 inset-y-0 flex items-center cursor-pointer"
                   onClick={passwordIsVisibleHandler}
@@ -183,8 +192,8 @@ sendLoginDetails(formData)
                     <AiFillEye className="text-gray-400 h-5 w-5 mr-3" />
                   )}
                 </div>
-              </div><p>
-                {formErrors.password}</p>
+              </div>
+              <p>{formErrors.password}</p>
               {password.isStrong !== null && (
                 <p className="mt-4 italic text-gray-500 font-light text-xs">
                   Password strength:
@@ -195,7 +204,11 @@ sendLoginDetails(formData)
                   >
                     {password.isStrong
                       ? "Strong"
-                      : `${<p className="text-red-600 text-sm">{formErrors.password}</p>}`}
+                      : `${(
+                          <p className="text-red-600 text-sm">
+                            {formErrors.password}
+                          </p>
+                        )}`}
                   </span>
                 </p>
               )}
