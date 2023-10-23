@@ -6,6 +6,8 @@ import { AiFillEye } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 import { HiLockOpen } from "react-icons/hi";
 import { AiFillEyeInvisible } from "react-icons/ai";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
   const initialValues = {
@@ -63,6 +65,8 @@ const SignUp = () => {
     }
   };
 
+  const notify = ()=>toast.success("Congratulations \n Account successfully created")
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const errors = formValidate(formData);
@@ -71,15 +75,15 @@ const SignUp = () => {
     // console.log(formData);
 
     if (Object.keys(errors).length === 0) {
-   
       sendLoginDetails(formData);
+      notify()
       setFormData(initialValues);
       setPassword((prevState) => ({
         ...prevState,
         isStrong: null,
       }));
     }
-    setIsSubmitted(false)
+    // setIsSubmitted(false)
   };
 
   const formValidate = (values) => {
@@ -111,7 +115,7 @@ const SignUp = () => {
     <div className="bg-signUp bg-no-repeat bg-cover bg-origin-padding  px-2 pb-48 md:pb-48">
       <div className=" relative top-24">
         {isSubmitted && (
-          <p className="bg-white text-center uppercase p-4 w-2/5 mx-auto text-green-600">successfully created an account</p>
+          <ToastContainer />
         )}
         <div className="p-2 lg:w-1/2 mx-auto">
           <div className="bg-white  rounded-t-lg p-4">
