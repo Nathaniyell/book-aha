@@ -27,9 +27,9 @@ const Navbar = () => {
     };
   }, [colourChange]);
 
-  const formSubmitHandler = (e)=>{
-    e.preventDefault()
-  }
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div
@@ -52,17 +52,24 @@ const Navbar = () => {
           );
         })}
         <div>
-          <form onSubmit={formSubmitHandler}>
-            <select name="language" value={selectCity} defaultValue="EN" onChange={e=>setSelectCity(e.target.value)} className={`text-white ${ colourChange ? "bg-black" : "bg-inherit"}`}>
-              <option value="1">
+          <form>
+            <select
+              name="language"
+              value={selectCity}
+              onChange={(e) => setSelectCity(e.target.value)}
+              className={`text-white ${
+                colourChange ? "bg-black" : "bg-inherit"
+              }`}
+            >
+              <option value="1" lang="en">
                 <img src={USA} alt="EN-US" className="block w-[400px]" />
                 EN
               </option>
-              <option value="2">
+              <option value="2" lang="fr">
                 <img src={FR} alt="FR" className="inline" />
                 FR
               </option>
-              <option value="3">
+              <option value="3" lang="es">
                 <img src={ESP} alt="ESP" className="inline" />
                 ESP
               </option>
