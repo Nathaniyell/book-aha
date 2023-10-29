@@ -47,8 +47,8 @@ const Navbar = () => {
           );
         })}
         <div>
-          <span className="text-white bg-red-600">
-            <select name="city" id="city" className="text-white">
+          <span>
+            <select name="city" id="city" className={`${ colourChange ? "bg-black" : "bg-inherit"}`}>
               <option value="1">
                 <img src={USA} alt="EN-US" className="inline" />
                 EN
