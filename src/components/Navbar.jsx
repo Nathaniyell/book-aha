@@ -53,7 +53,7 @@ const Navbar = () => {
         })}
         <div>
           <form onSubmit={formSubmitHandler}>
-            <select name="language" defaultValue="EN" className={`text-white ${ colourChange ? "bg-black" : "bg-inherit"}`}>
+            <select name="language" value={selectCity} defaultValue="EN" onChange={e=>setSelectCity(e.target.value)} className={`text-white ${ colourChange ? "bg-black" : "bg-inherit"}`}>
               <option value="1">
                 <img src={USA} alt="EN-US" className="block w-[400px]" />
                 EN
