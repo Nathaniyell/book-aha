@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom"; 
 import logo from "../assets/logo.png";
 import Button from "./Button";
+import USA from "../assets/us.png"
+import FR from "../assets/fr.png"
+import ESP from "../assets/esp.png"
 
 const Navbar = () => {
   const [colourChange, setColourChange] = useState(false);
@@ -41,9 +44,14 @@ const Navbar = () => {
                       );
         })}
         <div>
-          <span></span>
-          <span>EN</span>
-        </div>
+          <span className="text-white bg-red-600">
+            <select name="city" id="city" className="text-white">
+           <option value="1">{USA}EN</option>
+           <option value="2">{FR}FR</option>
+           <option value="3">{ESP}FR</option>
+           </select>
+          </span>
+               </div>
       </ul>
       <Button classes="hidden sm:block" title={"Download App"} fontSize={"sm"} padding={6} />
     </div>
