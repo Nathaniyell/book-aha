@@ -27,9 +27,7 @@ const Navbar = () => {
     };
   }, [colourChange]);
 
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-  };
+
 
   return (
     <div
@@ -38,10 +36,9 @@ const Navbar = () => {
       }`}
     >
       <Link to="/">
-        {" "}
-        <img className="w-[40%] md:w-full text-white" src={logo} alt="Logo" />
+          <img className="w-[35%] md:w-full text-white" src={logo} alt="Logo" />
       </Link>
-      <ul className="flex text-white items-center justify-around lg:w-1/4 -ml-32 md:-ml-0 w-[45%]">
+      <ul className="flex text-white items-center justify-around lg:w-1/4 -ml-[10rem] md:-ml-0 w-[50%]">
         {["About", "SignUp"].map((item) => {
           return (
             <Link to={`/${item}`} key={item}>
