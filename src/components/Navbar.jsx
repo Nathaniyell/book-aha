@@ -4,10 +4,11 @@ import logo from "../assets/logo.png";
 import Button from "./Button";
 import USA from "../assets/us.png";
 import FR from "../assets/fr.png";
-import ESP from "../assets/esp.png";
+import ESP from "../assets/Mask.svg";
 
 const Navbar = () => {
   const [colourChange, setColourChange] = useState(false);
+  const [selectCity, setSelectCity] = useState("EN");
 
   const handleNavColour = () => {
     if (window.scrollY >= 40) {
@@ -25,6 +26,10 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleNavColour);
     };
   }, [colourChange]);
+
+  const formSubmitHandler = (e)=>{
+    e.preventDefault()
+  }
 
   return (
     <div
@@ -47,22 +52,22 @@ const Navbar = () => {
           );
         })}
         <div>
-          <span>
-            <select name="city" id="city" className={`${ colourChange ? "bg-black" : "bg-inherit"}`}>
+          <form onSubmit={formSubmitHandler}>
+            <select name="language" defaultValue="EN" className={`text-white ${ colourChange ? "bg-black" : "bg-inherit"}`}>
               <option value="1">
-                <img src={USA} alt="EN-US" className="inline" />
+                <img src={USA} alt="EN-US" className="block w-[400px]" />
                 EN
               </option>
-              <option value="1">
+              <option value="2">
                 <img src={FR} alt="FR" className="inline" />
                 FR
               </option>
-              <option value="1">
+              <option value="3">
                 <img src={ESP} alt="ESP" className="inline" />
                 ESP
               </option>
             </select>
-          </span>
+          </form>
         </div>
       </ul>
       <Button
